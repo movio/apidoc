@@ -1,0 +1,9 @@
+apidoc-postgres:
+  image: postgres:9.4.4
+  ports:
+    - "5432:5432"
+  extra_hosts:
+    - "dockerhost:172.17.42.1"
+  volumes:
+    - /tmp/apidoc-postgres/data2:/var/lib/postgresql/data
+  container_name: apidoc-postgres

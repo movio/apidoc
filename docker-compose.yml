@@ -1,0 +1,23 @@
+apidoc-api:
+  image: apidoc
+  ports:
+    - "9001:9001"
+  extra_hosts:
+    - "dockerhost:172.17.42.1"
+  container_name: apidoc-api
+  volumes:
+    - "/home/jamesk/.ivy2:/root/.ivy2"
+  tty: true
+  command: /usr/share/apidoc/start.sh api
+
+apidoc-www:
+  image: apidoc
+  ports:
+    - "9000:9000"
+  extra_hosts:
+    - "dockerhost:172.17.42.1"
+  container_name: apidoc-www
+  volumes:
+    - "/home/jamesk/.ivy2:/root/.ivy2"
+  tty: true
+  command: /usr/share/apidoc/start.sh www
