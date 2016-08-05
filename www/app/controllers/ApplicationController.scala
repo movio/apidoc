@@ -27,7 +27,7 @@ class ApplicationController @Inject() (val messagesApi: MessagesApi) extends Con
           )
         } yield {
           Ok(
-            views.html.index(
+            views.html.admin(
               request.mainTemplate(title = Some("Organizations")),
               PaginatedCollection(orgsPage, Seq.empty),
               PaginatedCollection(membershipRequestsPage, Seq.empty),
@@ -55,7 +55,7 @@ class ApplicationController @Inject() (val messagesApi: MessagesApi) extends Con
           )
         } yield {
           Ok(
-            views.html.index(
+            views.html.admin(
               request.mainTemplate(title = Some("Your Organizations")),
               PaginatedCollection(orgsPage, orgs),
               PaginatedCollection(membershipRequestsPage, membershipRequests),

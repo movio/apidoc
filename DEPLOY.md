@@ -22,7 +22,11 @@ Building the Docker Image
 
   You can also build the docker image directly:
 
-  docker build -t mbryzek/apidoc:0.11.31 .
+    cd www/ui
+    git pull
+    cd ../..
+    ./ui-build.sh
+    docker build -t mbryzek/apidoc:0.11.31 .
 
 Releasing a schema change
 =========================

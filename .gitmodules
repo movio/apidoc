@@ -1,0 +1,3 @@
+[submodule "www/ui"]
+	path = www/ui
+	url = https://github.com/movio/apidoc-ui.git

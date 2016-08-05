@@ -1,6 +1,8 @@
 GET     /_internal_/healthcheck                                   controllers.Healthchecks.index()
 
-GET     /                                                         controllers.ApplicationController.index(orgsPage: Int ?= 0, membershipRequestsPage: Int ?= 0, publicOrganizationsPage: Int ?= 0)
+GET     /                                                         controllers.Assets.at(path="/public", file="index.html")
+
+GET     /admin                                                    controllers.ApplicationController.index(orgsPage: Int ?= 0, membershipRequestsPage: Int ?= 0, publicOrganizationsPage: Int ?= 0)
 
 GET     /login                                                    controllers.LoginController.redirect
 GET     /login/                                                   controllers.LoginController.index(return_url: Option[String] ?= None)
