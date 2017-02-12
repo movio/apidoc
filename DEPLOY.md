@@ -22,9 +22,8 @@ Building the Docker Image
 
   You can also build the docker image directly:
 
-    cd www/ui
-    git pull
-    cd ../..
+    git submodule init
+    git submodule update
     ./ui-build.sh
     docker build -t mbryzek/apidoc:0.11.31 .
 
