@@ -4,7 +4,7 @@ set -e
 cd www/ui
 
 # requires npm 6+
-npm install
-npm run build
+yarn install
+yarn run build
 
-cp build.prod/* ../public
+cp dist/prod/* ../public
