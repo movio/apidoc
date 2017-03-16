@@ -1,0 +1,13 @@
+{
+  "organizations":{
+    "movio.cinema":{
+      "documents":[
+        {
+          "name":"API Overview",
+          "rootUrl":"https://api-doc.movio.co/docs/mc-data-in-api-overview/",
+          "markdownPath":"README.md"
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Copy docs
+cp www/documents.prod.json www/ui/documents.json
+
 cd www/ui
 
 # requires npm 6+
