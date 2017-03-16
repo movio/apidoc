@@ -5,6 +5,6 @@ cd www/ui
 
 # requires npm 6+
 yarn install
-yarn run build
+PREFIX='/assets' yarn run build
 
 cp dist/prod/* ../public
