@@ -1,133 +1,135 @@
 GET     /_internal_/healthcheck                                   controllers.Healthchecks.index()
 
-GET     /                                                         controllers.Assets.at(path="/public", file="index.html")
-
 GET     /admin                                                    controllers.ApplicationController.index(orgsPage: Int ?= 0, membershipRequestsPage: Int ?= 0, publicOrganizationsPage: Int ?= 0)
 
-GET     /login                                                    controllers.LoginController.redirect
-GET     /login/                                                   controllers.LoginController.index(return_url: Option[String] ?= None)
-POST    /login/                                                   controllers.LoginController.indexPost
-POST    /login/register                                           controllers.LoginController.registerPost
-GET     /login/forgotPassword                                     controllers.LoginController.forgotPassword
-POST    /login/forgotPassword                                     controllers.LoginController.postForgotPassword
-GET     /login/resetPassword/:token                               controllers.LoginController.resetPassword(token: String)
-POST    /login/resetPassword/:token                               controllers.LoginController.postResetPassword(token: String)
+GET     /admin/login                                              controllers.LoginController.redirect
+GET     /admin/login/                                             controllers.LoginController.index(return_url: Option[String] ?= None)
+POST    /admin/login/                                             controllers.LoginController.indexPost
+POST    /admin/login/register                                     controllers.LoginController.registerPost
+GET     /admin/login/forgotPassword                               controllers.LoginController.forgotPassword
+POST    /admin/login/forgotPassword                               controllers.LoginController.postForgotPassword
+GET     /admin/login/resetPassword/:token                         controllers.LoginController.resetPassword(token: String)
+POST    /admin/login/resetPassword/:token                         controllers.LoginController.postResetPassword(token: String)
 
-GET     /account                                                  controllers.AccountController.redirect
-GET     /account/                                                 controllers.AccountController.index()
+GET     /admin/account                                            controllers.AccountController.redirect
+GET     /admin/account/                                           controllers.AccountController.index()
 
-GET     /account/profile                                          controllers.AccountProfileController.redirect()
-GET     /account/profile/                                         controllers.AccountProfileController.index()
-GET     /account/profile/edit                                     controllers.AccountProfileController.edit()
-POST    /account/profile/postEdit                                 controllers.AccountProfileController.postEdit()
+GET     /admin/account/profile                                    controllers.AccountProfileController.redirect()
+GET     /admin/account/profile/                                   controllers.AccountProfileController.index()
+GET     /admin/account/profile/edit                               controllers.AccountProfileController.edit()
+POST    /admin/account/profile/postEdit                           controllers.AccountProfileController.postEdit()
 
-GET     /logout                                                   controllers.LogoutController.logout
-GET     /logged_out                                               controllers.LogoutController.logged_out
+GET     /admin/logout                                             controllers.LogoutController.logout
+GET     /admin/logged_out                                         controllers.LogoutController.logged_out
 
-GET     /doc                                                      controllers.DocController.redirect
-GET     /doc/                                                     controllers.DocController.index
-GET     /doc/start                                                controllers.DocController.start
-GET     /doc/apiJson                                              controllers.DocController.apiJson
-GET     /doc/attributes                                           controllers.DocController.attributes
-GET     /doc/types                                                controllers.DocController.types
-GET     /doc/examples                                             controllers.DocController.examples
-GET     /doc/generators                                           controllers.DocController.generators
-GET     /doc/history                                              controllers.DocController.history
-GET     /doc/releaseNotes                                         controllers.DocController.releaseNotes
-GET     /doc/todo                                                 controllers.DocController.todo
-GET     /doc/playRoutesFile                                       controllers.DocController.playRoutesFile
-GET     /doc/playUnionTypes                                       controllers.DocController.playUnionTypes
+GET     /admin/doc                                                controllers.DocController.redirect
+GET     /admin/doc/                                               controllers.DocController.index
+GET     /admin/doc/start                                          controllers.DocController.start
+GET     /admin/doc/apiJson                                        controllers.DocController.apiJson
+GET     /admin/doc/attributes                                     controllers.DocController.attributes
+GET     /admin/doc/types                                          controllers.DocController.types
+GET     /admin/doc/examples                                       controllers.DocController.examples
+GET     /admin/doc/generators                                     controllers.DocController.generators
+GET     /admin/doc/history                                        controllers.DocController.history
+GET     /admin/doc/releaseNotes                                   controllers.DocController.releaseNotes
+GET     /admin/doc/todo                                           controllers.DocController.todo
+GET     /admin/doc/playRoutesFile                                 controllers.DocController.playRoutesFile
+GET     /admin/doc/playUnionTypes                                 controllers.DocController.playUnionTypes
 
-GET     /email-verifications/:token                               controllers.EmailVerifications.get(token: String)
+GET     /admin/email-verifications/:token                         controllers.EmailVerifications.get(token: String)
 
-GET     /generators                                               controllers.Generators.redirect()
-GET     /generators/                                              controllers.Generators.index(page: Int ?= 0)
-GET     /generators/show/:key                                     controllers.Generators.show(key: String)
-GET     /generators/create                                        controllers.Generators.create()
-POST    /generators/createPost                                    controllers.Generators.createPost()
-GET     /generators/servies/:guid/show                            controllers.GeneratorServices.show(guid: java.util.UUID, page: Int ?= 0)
-POST    /generator/services/:guid/delete                          controllers.GeneratorServices.deletePost(guid: java.util.UUID)
+GET     /admin/generators                                         controllers.Generators.redirect()
+GET     /admin/generators/                                        controllers.Generators.index(page: Int ?= 0)
+GET     /admin/generators/show/:key                               controllers.Generators.show(key: String)
+GET     /admin/generators/create                                  controllers.Generators.create()
+POST    /admin/generators/createPost                              controllers.Generators.createPost()
+GET     /admin/generators/servies/:guid/show                      controllers.GeneratorServices.show(guid: java.util.UUID, page: Int ?= 0)
+POST    /admin/generator/services/:guid/delete                    controllers.GeneratorServices.deletePost(guid: java.util.UUID)
 
-GET     /attributes                                               controllers.ApplicationController.redirect()
-GET     /attributes/                                              controllers.AttributesController.index(page: Int ?= 0)
-GET     /attributes/create                                        controllers.AttributesController.create()
-POST    /attributes/createPost                                    controllers.AttributesController.createPost()
-GET     /attributes/:name                                         controllers.AttributesController.show(name: String, page: Int ?= 0)
-POST    /attributes/:name/delete                                  controllers.AttributesController.deletePost(name: String)
+GET     /admin/attributes                                         controllers.ApplicationController.redirect()
+GET     /admin/attributes/                                        controllers.AttributesController.index(page: Int ?= 0)
+GET     /admin/attributes/create                                  controllers.AttributesController.create()
+POST    /admin/attributes/createPost                              controllers.AttributesController.createPost()
+GET     /admin/attributes/:name                                   controllers.AttributesController.show(name: String, page: Int ?= 0)
+POST    /admin/attributes/:name/delete                            controllers.AttributesController.deletePost(name: String)
 
-GET     /tokens                                                   controllers.TokensController.redirect()
-GET     /tokens/                                                  controllers.TokensController.index(page: Int ?= 0)
-GET     /tokens/show/:guid                                        controllers.TokensController.show(guid: java.util.UUID)
-GET     /tokens/cleartext/:guid                                   controllers.TokensController.cleartext(guid: java.util.UUID)
-GET     /tokens/create                                            controllers.TokensController.create
-POST    /tokens/postCreate                                        controllers.TokensController.postCreate
-POST    /tokens/postDelete/:guid                                  controllers.TokensController.postDelete(guid: java.util.UUID)
+GET     /admin/tokens                                             controllers.TokensController.redirect()
+GET     /admin/tokens/                                            controllers.TokensController.index(page: Int ?= 0)
+GET     /admin/tokens/show/:guid                                  controllers.TokensController.show(guid: java.util.UUID)
+GET     /admin/tokens/cleartext/:guid                             controllers.TokensController.cleartext(guid: java.util.UUID)
+GET     /admin/tokens/create                                      controllers.TokensController.create
+POST    /admin/tokens/postCreate                                  controllers.TokensController.postCreate
+POST    /admin/tokens/postDelete/:guid                            controllers.TokensController.postDelete(guid: java.util.UUID)
 
-GET     /assets/*file                                             controllers.Assets.at(path="/public", file)
+GET     /admin/org/create                                         controllers.Organizations.create
+POST    /admin/org/createPost                                     controllers.Organizations.createPost
+GET     /admin/org/edit                                           controllers.Organizations.edit(org_key: String)
+POST    /admin/org/editPost                                       controllers.Organizations.editPost(org_key: String)
+POST    /admin/org/deletePost                                     controllers.Organizations.deletePost(org_key: String)
 
-GET     /org/create                                               controllers.Organizations.create
-POST    /org/createPost                                           controllers.Organizations.createPost
-GET     /org/edit                                                 controllers.Organizations.edit(org_key: String)
-POST    /org/editPost                                             controllers.Organizations.editPost(org_key: String)
-POST    /org/deletePost                                           controllers.Organizations.deletePost(org_key: String)
-
-GET     /history                                                  controllers.HistoryController.index(org: Option[String] ?= None, app: Option[String] ?= None, page: Int ?= 0)
-GET     /search                                                   controllers.SearchController.index(q: Option[String] ?= None, org: Option[String] ?= None, page: Int ?= 0)
+GET     /admin/history                                            controllers.HistoryController.index(org: Option[String] ?= None, app: Option[String] ?= None, page: Int ?= 0)
+GET     /admin/search                                             controllers.SearchController.index(q: Option[String] ?= None, org: Option[String] ?= None, page: Int ?= 0)
 
 # Start dynamic routing by org key
 
-GET     /:orgKey                                                  controllers.Organizations.show(orgKey: String, page: Int ?= 0)
-GET     /:orgKey/details                                          controllers.Organizations.details(orgKey: String)
+GET     /admin/:orgKey                                            controllers.Organizations.show(orgKey: String, page: Int ?= 0)
+GET     /admin/:orgKey/details                                    controllers.Organizations.details(orgKey: String)
 
-GET     /:orgKey/domains                                          controllers.Domains.index(orgKey: String)
-POST    /:orgKey/domains/:domain/remove                           controllers.Domains.postRemove(orgKey: String, domain: String)
-GET     /:orgKey/domains/create                                   controllers.Domains.create(orgKey: String)
-POST    /:orgKey/domains/postCreate                               controllers.Domains.postCreate(orgKey: String)
+GET     /admin/:orgKey/domains                                    controllers.Domains.index(orgKey: String)
+POST    /admin/:orgKey/domains/:domain/remove                     controllers.Domains.postRemove(orgKey: String, domain: String)
+GET     /admin/:orgKey/domains/create                             controllers.Domains.create(orgKey: String)
+POST    /admin/:orgKey/domains/postCreate                         controllers.Domains.postCreate(orgKey: String)
 
-GET     /:orgKey/attributes                                       controllers.ApplicationController.redirectOrg(orgKey: String)
-GET     /:orgKey/attributes/                                      controllers.OrganizationAttributesController.index(orgKey: String)
-GET     /:orgKey/attributes/:name/edit                            controllers.OrganizationAttributesController.edit(orgKey: String, name: String)
-POST    /:orgKey/attributes/:name/editPost                        controllers.OrganizationAttributesController.editPost(orgKey: String, name: String)
+GET     /admin/:orgKey/attributes                                 controllers.ApplicationController.redirectOrg(orgKey: String)
+GET     /admin/:orgKey/attributes/                                controllers.OrganizationAttributesController.index(orgKey: String)
+GET     /admin/:orgKey/attributes/:name/edit                      controllers.OrganizationAttributesController.edit(orgKey: String, name: String)
+POST    /admin/:orgKey/attributes/:name/editPost                  controllers.OrganizationAttributesController.editPost(orgKey: String, name: String)
 
-GET     /:orgKey/members                                          controllers.Members.show(orgKey: String, page: Int ?= 0)
-GET     /:orgKey/members/downloadCsv                              controllers.Members.downloadCsv(orgKey: String)
-GET     /:orgKey/members/add                                      controllers.Members.add(orgKey: String)
-POST    /:orgKey/members/addPost                                  controllers.Members.addPost(orgKey: String)
-POST    /:orgKey/members/postRemove                               controllers.Members.postRemove(orgKey: String, guid: java.util.UUID)
-POST    /:orgKey/members/postRevokeAdmin                          controllers.Members.postRevokeAdmin(orgKey: String, guid: java.util.UUID)
-POST    /:orgKey/members/postMakeAdmin                            controllers.Members.postMakeAdmin(orgKey: String, guid: java.util.UUID)
+GET     /admin/:orgKey/members                                    controllers.Members.show(orgKey: String, page: Int ?= 0)
+GET     /admin/:orgKey/members/downloadCsv                        controllers.Members.downloadCsv(orgKey: String)
+GET     /admin/:orgKey/members/add                                controllers.Members.add(orgKey: String)
+POST    /admin/:orgKey/members/addPost                            controllers.Members.addPost(orgKey: String)
+POST    /admin/:orgKey/members/postRemove                         controllers.Members.postRemove(orgKey: String, guid: java.util.UUID)
+POST    /admin/:orgKey/members/postRevokeAdmin                    controllers.Members.postRevokeAdmin(orgKey: String, guid: java.util.UUID)
+POST    /admin/:orgKey/members/postMakeAdmin                      controllers.Members.postMakeAdmin(orgKey: String, guid: java.util.UUID)
 
-POST    /:orgKey/membership_request_reviews/accept                controllers.MembershipRequestReviews.accept(orgKey: String, membership_request_guid: java.util.UUID)
-POST    /:orgKey/membership_request_reviews/decline               controllers.MembershipRequestReviews.decline(orgKey: String, membership_request_guid: java.util.UUID)
+POST    /admin/:orgKey/membership_request_reviews/accept          controllers.MembershipRequestReviews.accept(orgKey: String, membership_request_guid: java.util.UUID)
+POST    /admin/:orgKey/membership_request_reviews/decline         controllers.MembershipRequestReviews.decline(orgKey: String, membership_request_guid: java.util.UUID)
 
-GET     /:orgKey/membership_requests                              controllers.Organizations.membershipRequests(orgKey: String, page: Int ?= 0)
+GET     /admin/:orgKey/membership_requests                        controllers.Organizations.membershipRequests(orgKey: String, page: Int ?= 0)
 
-GET     /:orgKey/memberships/request                              controllers.Organizations.requestMembership(orgKey: String)
-POST    /:orgKey/memberships/request                              controllers.Organizations.postRequestMembership(orgKey: String)
+GET     /admin/:orgKey/memberships/request                        controllers.Organizations.requestMembership(orgKey: String)
+POST    /admin/:orgKey/memberships/request                        controllers.Organizations.postRequestMembership(orgKey: String)
 
-GET     /:orgKey/version/create                                   controllers.Versions.create(orgKey: String, application: Option[String] ?= None)
-POST    /:orgKey/version/createPost                               controllers.Versions.createPost(orgKey: String, application: Option[String] ?= None)
+GET     /admin/:orgKey/version/create                             controllers.Versions.create(orgKey: String, application: Option[String] ?= None)
+POST    /admin/:orgKey/version/createPost                         controllers.Versions.createPost(orgKey: String, application: Option[String] ?= None)
 
-GET     /:orgKey/subscriptions/                                   controllers.Subscriptions.index(orgKey: String)
-POST    /:orgKey/subscriptions/:publication/toggle                controllers.Subscriptions.postToggle(orgKey: String, publication: com.bryzek.apidoc.api.v0.models.Publication)
+GET     /admin/:orgKey/subscriptions/                             controllers.Subscriptions.index(orgKey: String)
+POST    /admin/:orgKey/subscriptions/:publication/toggle          controllers.Subscriptions.postToggle(orgKey: String, publication: com.bryzek.apidoc.api.v0.models.Publication)
 
 # Start dynamic routing by application key
 
-GET     /:orgKey/:applicationKey/:version/settings                controllers.ApplicationSettings.show(orgKey: String, applicationKey: String, version: String)
-GET     /:orgKey/:applicationKey/:version/settings/edit           controllers.ApplicationSettings.edit(orgKey: String, applicationKey: String, version: String)
-POST    /:orgKey/:applicationKey/:version/settings/postEdit       controllers.ApplicationSettings.postEdit(orgKey: String, applicationKey: String, version: String)
-POST    /:orgKey/:applicationKey/settings/postDelete              controllers.ApplicationSettings.postDelete(orgKey: String, applicationKey: String)
-GET     /:orgKey/:applicationKey/settings/move                    controllers.ApplicationSettings.move(orgKey: String, applicationKey: String)
-POST    /:orgKey/:applicationKey/settings/postMove                controllers.ApplicationSettings.postMove(orgKey: String, applicationKey: String)
+GET     /admin/:orgKey/:applicationKey/:version/settings           controllers.ApplicationSettings.show(orgKey: String, applicationKey: String, version: String)
+GET     /admin/:orgKey/:applicationKey/:version/settings/edit      controllers.ApplicationSettings.edit(orgKey: String, applicationKey: String, version: String)
+POST    /admin/:orgKey/:applicationKey/:version/settings/postEdit  controllers.ApplicationSettings.postEdit(orgKey: String, applicationKey: String, version: String)
+POST    /admin/:orgKey/:applicationKey/settings/postDelete         controllers.ApplicationSettings.postDelete(orgKey: String, applicationKey: String)
+GET     /admin/:orgKey/:applicationKey/settings/move               controllers.ApplicationSettings.move(orgKey: String, applicationKey: String)
+POST    /admin/:orgKey/:applicationKey/settings/postMove           controllers.ApplicationSettings.postMove(orgKey: String, applicationKey: String)
 
-GET     /:orgKey/:applicationKey                                  controllers.Versions.redirectToLatest(orgKey: String, applicationKey: String)
-GET     /:orgKey/:applicationKey/:version                         controllers.Versions.show(orgKey: String, applicationKey: String, version: String)
-GET     /:orgKey/:applicationKey/:version/original                controllers.Versions.original(orgKey: String, applicationKey: String, version: String)
-GET     /:orgKey/:applicationKey/:version/service.json            controllers.Versions.serviceJson(orgKey: String, applicationKey: String, version: String)
-POST    /:orgKey/:applicationKey/:version/watch                   controllers.Versions.postWatch(orgKey: String, applicationKey: String, version: String)
-POST    /:orgKey/:applicationKey/:version/postDelete              controllers.Versions.postDelete(orgKey: String, applicationKey: String, version: String)
-GET     /:orgKey/:applicationKey/:version/:generatorKey           controllers.Code.index(orgKey: String, applicationKey: String, version: String, generatorKey: String)
-GET     /:orgKey/:applicationKey/:version/:generatorKey/:fileName.zip       controllers.Code.zipFile(orgKey: String, applicationKey: String, version: String, generatorKey: String, fileName: String)
-GET     /:orgKey/:applicationKey/:version/:generatorKey/:fileName.tar.gz    controllers.Code.tarballFile(orgKey: String, applicationKey: String, version: String, generatorKey: String, fileName: String)
-GET     /:orgKey/:applicationKey/:version/:generatorKey/:fileName controllers.Code.file(orgKey: String, applicationKey: String, version: String, generatorKey: String, fileName: String)
+GET     /admin/:orgKey/:applicationKey                                          controllers.Versions.redirectToLatest(orgKey: String, applicationKey: String)
+GET     /admin/:orgKey/:applicationKey/:version                                 controllers.Versions.show(orgKey: String, applicationKey: String, version: String)
+GET     /admin/:orgKey/:applicationKey/:version/original                        controllers.Versions.original(orgKey: String, applicationKey: String, version: String)
+GET     /admin/:orgKey/:applicationKey/:version/service.json                    controllers.Versions.serviceJson(orgKey: String, applicationKey: String, version: String)
+POST    /admin/:orgKey/:applicationKey/:version/watch                           controllers.Versions.postWatch(orgKey: String, applicationKey: String, version: String)
+POST    /admin/:orgKey/:applicationKey/:version/postDelete                      controllers.Versions.postDelete(orgKey: String, applicationKey: String, version: String)
+GET     /admin/:orgKey/:applicationKey/:version/:generatorKey                   controllers.Code.index(orgKey: String, applicationKey: String, version: String, generatorKey: String)
+GET     /admin/:orgKey/:applicationKey/:version/:generatorKey/:fileName.zip     controllers.Code.zipFile(orgKey: String, applicationKey: String, version: String, generatorKey: String, fileName: String)
+GET     /admin/:orgKey/:applicationKey/:version/:generatorKey/:fileName.tar.gz  controllers.Code.tarballFile(orgKey: String, applicationKey: String, version: String, generatorKey: String, fileName: String)
+GET     /admin/:orgKey/:applicationKey/:version/:generatorKey/:fileName         controllers.Code.file(orgKey: String, applicationKey: String, version: String, generatorKey: String, fileName: String)
 
+GET     /assets/*file                                             controllers.Assets.at(path="/public", file)
+
+# Any thing that doesn't match the above routes goes to the new frontend
+
+GET     /                                                         controllers.NewUIController.index(path = "/")
+GET     /*path                                                    controllers.NewUIController.index(path)
