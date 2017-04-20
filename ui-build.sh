@@ -3,6 +3,7 @@ set -e
 
 # Copy docs
 cp www/documents.prod.json www/ui/documents.json
+cp www/favicon.ico www/ui/src/favicon.ico
 
 cd www/ui
 
