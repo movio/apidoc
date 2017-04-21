@@ -83,7 +83,7 @@ class Organizations @Inject() (val messagesApi: MessagesApi) extends Controller 
     } yield {
       orgResponse.headOption match {
         case None => {
-          Redirect("/").flashing("warning" -> s"Organization $orgKey not found")
+          Redirect(routes.ApplicationController.index()).flashing("warning" -> s"Organization $orgKey not found")
         }
         case Some(org: Organization) => {
           val isMember = !membershipsResponse.headOption.isEmpty
@@ -104,7 +104,7 @@ class Organizations @Inject() (val messagesApi: MessagesApi) extends Controller 
     request.api.Organizations.get(key = Some(orgKey)).flatMap { orgs =>
       orgs.headOption match {
         case None => Future {
-          Redirect("/").flashing("warning" -> s"Organization $orgKey not found")
+          Redirect(routes.ApplicationController.index()).flashing("warning" -> s"Organization $orgKey not found")
         }
         case Some(org: Organization) => {
           request.api.MembershipRequests.post(org.guid, request.user.guid, Role.Member.key).map { _ =>

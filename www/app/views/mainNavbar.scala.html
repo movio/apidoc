@@ -7,7 +7,7 @@
   <div class="container">
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="logo"><a class="apidoc" href="/">apidoc</a></li>
+        <li class="logo"><a class="apidoc" href="@routes.ApplicationController.index()">apidoc</a></li>
         <li><a href="@routes.DocController.index()">Documentation</a></li>
         <li><a href="@lib.Util.ApidocGitHubUrl">github</a></li>
       </ul>
@@ -24,7 +24,7 @@
                   </div>
               </div>
           </form>
-      </div> 
+      </div>
 
       @if(user.isEmpty) {
         <ul class="nav navbar-nav navbar-right">
@@ -34,13 +34,13 @@
 
        <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="/account" class="dropdown-toggle" data-toggle="dropdown">@user.get.nickname <b class="caret"></b></a>
+            <a href="@routes.AccountController.index()" class="dropdown-toggle" data-toggle="dropdown">@user.get.nickname <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="@routes.Generators.index()">Generators</a></li>
               <li><a href="@routes.AttributesController.index()">Attributes</a></li>
               <li><a href="@routes.AccountController.index()">Account</a></li>
               <li><a href="@routes.TokensController.index()">Tokens</a></li>
-              <li><a href="/logout">Logout</a></li>
+              <li><a href="@routes.LogoutController.logout()">Logout</a></li>
             </ul>
           </li>
         </ul>

@@ -109,7 +109,12 @@ object AnonymousRequest {
 
   def resources(requestPath: String, userGuid: Option[String]): RequestResources = {
     val user = userGuid.flatMap { ApiClient.getUser(_) }
-    val org = requestPath.split("/").drop(1).headOption.flatMap { getOrganization(user, _) }
+    val org = requestPath
+      .replace(routes.ApplicationController.index().path, "")
+      .split("/")
+      .drop(1)
+      .headOption
+      .flatMap { getOrganization(user, _) }
 
     val memberships = (user, org) match {
       case (Some(u), Some(o)) => {
@@ -144,7 +149,7 @@ object AnonymousOrg extends ActionBuilder[AnonymousOrgRequest] {
   def invokeBlock[A](request: Request[A], block: (AnonymousOrgRequest[A]) => Future[Result]) = {
     val resources = AnonymousRequest.resources(request.path, request.session.get("user_guid"))
     if (resources.org.isEmpty) {
-      Future.successful(Redirect("/").flashing("warning" -> "Org not found or access denied"))
+      Future.successful(Redirect(routes.ApplicationController.index()).flashing("warning" -> "Org not found or access denied"))
     } else {
       val anon = new AnonymousRequest(resources, request)
       val anonRequest = new AnonymousOrgRequest(anon)
@@ -154,7 +159,7 @@ object AnonymousOrg extends ActionBuilder[AnonymousOrgRequest] {
       } else if (resources.org.map(_.visibility) == Some(Visibility.Public)) {
         block(anonRequest)
       } else {
-        Future.successful(Redirect("/").flashing("warning" -> "Org not found or access denied"))
+        Future.successful(Redirect(routes.ApplicationController.index()).flashing("warning" -> "Org not found or access denied"))
       }
     }
   }
