@@ -80,7 +80,7 @@ object AuthenticatedOrg extends ActionBuilder[AuthenticatedOrgRequest] {
           val memberships = Await.result(Authenticated.api(Some(u)).Memberships.get(orgKey = Some(orgKey), userGuid = Some(u.guid)), 1000.millis)
           orgOption match {
             case None => {
-              Future.successful(Redirect("/").flashing("warning" -> s"Organization $orgKey not found"))
+              Future.successful(Redirect(routes.ApplicationController.index()).flashing("warning" -> s"Organization $orgKey not found"))
             }
 
             case Some(org: Organization) => {

@@ -117,10 +117,10 @@ class LoginController @Inject() (val messagesApi: MessagesApi) extends Controlle
         Authenticated.api().passwordResets.post(
           passwordReset = PasswordReset(token = token, password = validForm.password)
         ).map { result =>
-          Redirect("/").
+          Redirect(routes.ApplicationController.index()).
             withSession { "user_guid" -> result.userGuid.toString }.
             flashing("success" -> "Your password has been reset and you are now logged in")
-        
+
         }.recover {
           case r: com.bryzek.apidoc.api.v0.errors.ErrorsResponse => {
             Ok(views.html.login.resetPassword(tpl, token, form, Some(r.errors.map(_.message).mkString(", "))))

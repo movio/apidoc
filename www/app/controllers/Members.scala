@@ -29,11 +29,11 @@ class Members @Inject() (val messagesApi: MessagesApi) extends Controller with I
     } yield {
       orgs.headOption match {
 
-        case None => Redirect("/").flashing("warning" -> "Organization not found")
+        case None => Redirect(routes.ApplicationController.index()).flashing("warning" -> "Organization not found")
 
         case Some(o: Organization) => {
           val tpl = request.mainTemplate(Some("Members")).copy(settings = Some(SettingsMenu(section = Some(SettingSection.Members))))
-          Ok(views.html.members.show(tpl, 
+          Ok(views.html.members.show(tpl,
                                      members = PaginatedCollection(page, members),
                                      isAdmin = request.isAdmin))
         }
