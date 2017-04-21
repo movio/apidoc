@@ -60,7 +60,7 @@ object AuthenticatedOrg extends ActionBuilder[AuthenticatedOrgRequest] {
       }
     }
 
-    val orgKeyOption = request.path.split("/").drop(1).headOption
+    val orgKeyOption = request.path.replace(routes.ApplicationController.index().path, "").split("/").drop(1).headOption
 
     request.session.get("user_guid").map { userGuid =>
 
